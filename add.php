@@ -1,16 +1,28 @@
 <?php
 
-// if(isset($_GET['submit'])){
-//     echo $_GET['email'];
-//     echo $_GET['title'];
-//     echo $_GET['ingredients'];
-// }
-
 if(isset($_POST['submit'])){
-    echo $_POST['email'];
-    echo $_POST['title'];
-    echo $_POST['ingredients'];
+
+    if(empty($_POST['email'])) {
+        echo 'An email is required <br />'; 
+    } else {
+        echo htmlspecialchars($_POST['email']);
+    }
+
+    if(empty($_POST['title'])) {
+        echo 'A title is required <br />'; 
+    } else {
+        echo htmlspecialchars($_POST['title']);
+    }
+
+    if(empty($_POST['ingredients'])) {
+        echo 'An ingredient is required <br />'; 
+    } else {
+        echo htmlspecialchars($_POST['ingredients']);
+    }
+
 }
+
+
 
 ?>
 
@@ -31,7 +43,7 @@ if(isset($_POST['submit'])){
         <label>Ingredients (separated) </label>
         <input type="text" name="ingredients">
         <div class="center">
-        <input type="submit" name="sumbit" value="submit" class="btn brand z-depth-0">
+        <input type="submit" name="submit" value="submit" class="btn brand z-depth-0">
         </div>
     </form>
     </section>
