@@ -5,19 +5,28 @@ if(isset($_POST['submit'])){
     if(empty($_POST['email'])) {
         echo 'An email is required <br />'; 
     } else {
-        echo htmlspecialchars($_POST['email']);
+        $email = $_POST['email'];
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+           echo 'not a valid email'; 
+        }
     }
 
     if(empty($_POST['title'])) {
         echo 'A title is required <br />'; 
     } else {
-        echo htmlspecialchars($_POST['title']);
+        $title = $_POST['title'];
+        if(!preg_match('/^[a-zA-Z\s]+$/', $title)){
+           echo 'not a valid title'; 
+        }
     }
 
     if(empty($_POST['ingredients'])) {
         echo 'An ingredient is required <br />'; 
     } else {
-        echo htmlspecialchars($_POST['ingredients']);
+        $ingredients = $_POST['ingredients'];
+        if(!preg_match('/^([a-zA-Z\s]+)(,\s*[a-zA-Z\s]*)*$/', $ingredients)){
+           echo 'needs ingredient'; 
+        }
     }
 
 }
